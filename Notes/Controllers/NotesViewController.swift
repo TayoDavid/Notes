@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class NotesViewController: UIViewController {
     
     private var dataSource: UICollectionViewDiffableDataSource<Section, Note>! = nil
@@ -46,7 +48,16 @@ class NotesViewController: UIViewController {
     }
 
     private func createLayout() -> UICollectionViewLayout {
-        let config = UICollectionLayoutListConfiguration(appearance: .plain)
+        var config = UICollectionLayoutListConfiguration(appearance: .plain)
+        
+        config.trailingSwipeActionsConfigurationProvider = { indexPath in
+            let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] action, view, completion in
+                self?.deleteItem(at: indexPath)
+                completion(true)
+            }
+            return UISwipeActionsConfiguration(actions: [deleteAction])
+        }
+        
         return UICollectionViewCompositionalLayout.list(using: config)
     }
     
@@ -110,16 +121,55 @@ class NotesViewController: UIViewController {
         guard let notes = notes else {
             return
         }
+        
         var snapshot = dataSource.snapshot()
         snapshot.appendItems(notes)
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    private func deleteItem(at indexPath: IndexPath) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let note = self.dataSource.itemIdentifier(for: indexPath)
+        
+        guard let note = note else { return }
+        
+        managedContext.delete(note)
+        
+        do {
+            try managedContext.save()
+            var snapshot = dataSource.snapshot()
+            
+            snapshot.deleteAllItems()
+            snapshot.appendSections([.main])
+            dataSource.apply(snapshot)
+            
+            fetchNotes()
+            updateCollectionView()
+            
+        } catch let error as NSError {
+            fatalError("\(error.userInfo)")
+        }
     }
 }
 
 extension NotesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+        guard let note = self.dataSource.itemIdentifier(for: indexPath) else {
+            collectionView.deselectItem(at: indexPath, animated: true)
+            return
+        }
+        
+        let noteVC = NoteDetailViewController()
+        noteVC.note = note
+        navigationController?.pushViewController(noteVC, animated: true)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, canEditItemAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
 }
 
 extension NotesViewController: AddNoteViewControllerDelegate {

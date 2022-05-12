@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04501443282D5270002DCD8B /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04501442282D5270002DCD8B /* NoteDetailViewController.swift */; };
 		0486A922282C5D5A003CC215 /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0486A920282C5D5A003CC215 /* Notes.xcdatamodeld */; };
 		04B1A18C282BB78C004CB407 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B1A18B282BB78C004CB407 /* AppDelegate.swift */; };
 		04B1A18E282BB78C004CB407 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B1A18D282BB78C004CB407 /* SceneDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04501442282D5270002DCD8B /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		0486A921282C5D5A003CC215 /* Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notes.xcdatamodel; sourceTree = "<group>"; };
 		04B1A188282BB78C004CB407 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B1A18B282BB78C004CB407 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0450143D282D422B002DCD8B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04B1A1A2282BFB77004CB407 /* AddNoteViewController.swift */,
+				04B1A18F282BB78C004CB407 /* NotesViewController.swift */,
+				04501442282D5270002DCD8B /* NoteDetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0450143E282D425A002DCD8B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				04B1A197282BB78D004CB407 /* Assets.xcassets */,
+				04B1A18B282BB78C004CB407 /* AppDelegate.swift */,
+				04B1A18D282BB78C004CB407 /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0450143F282D42AA002DCD8B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				04B1A191282BB78C004CB407 /* Main.storyboard */,
+				04B1A199282BB78D004CB407 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		04501440282D42C4002DCD8B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				04B1A1A4282C20CA004CB407 /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		04501441282D42F5002DCD8B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04B1A1A6282C2D0C004CB407 /* model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		04B1A17F282BB78B004CB407 = {
 			isa = PBXGroup;
 			children = (
@@ -64,16 +111,12 @@
 		04B1A18A282BB78C004CB407 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
-				04B1A18B282BB78C004CB407 /* AppDelegate.swift */,
-				04B1A1A2282BFB77004CB407 /* AddNoteViewController.swift */,
-				04B1A18D282BB78C004CB407 /* SceneDelegate.swift */,
-				04B1A18F282BB78C004CB407 /* NotesViewController.swift */,
-				04B1A191282BB78C004CB407 /* Main.storyboard */,
-				04B1A197282BB78D004CB407 /* Assets.xcassets */,
-				04B1A199282BB78D004CB407 /* LaunchScreen.storyboard */,
+				04501441282D42F5002DCD8B /* Model */,
+				0450143E282D425A002DCD8B /* Resources */,
+				0450143D282D422B002DCD8B /* Controllers */,
+				0450143F282D42AA002DCD8B /* Views */,
+				04501440282D42C4002DCD8B /* Helpers */,
 				04B1A19C282BB78D004CB407 /* Info.plist */,
-				04B1A1A4282C20CA004CB407 /* Extensions.swift */,
-				04B1A1A6282C2D0C004CB407 /* model.swift */,
 				0486A920282C5D5A003CC215 /* Notes.xcdatamodeld */,
 			);
 			path = Notes;
@@ -155,6 +198,7 @@
 				04B1A18C282BB78C004CB407 /* AppDelegate.swift in Sources */,
 				0486A922282C5D5A003CC215 /* Notes.xcdatamodeld in Sources */,
 				04B1A18E282BB78C004CB407 /* SceneDelegate.swift in Sources */,
+				04501443282D5270002DCD8B /* NoteDetailViewController.swift in Sources */,
 				04B1A1A3282BFB77004CB407 /* AddNoteViewController.swift in Sources */,
 				04B1A1A7282C2D0C004CB407 /* model.swift in Sources */,
 			);
